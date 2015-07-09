@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Calculation_Practice_app</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_start">Calculation Practice</string>
+    <string name="title_activity_finish">FinishActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string-array name="question_numbers">
+        <item>10問</item>
+        <item>15問</item>
+        <item>20問</item>
+        <item>100問</item>
+    </string-array>
+    <string-array name="eraser_color">
+        <item>青</item>
+        <item>緑</item>
+        <item>水色</item>
+        <item>黄緑</item>
+        <item>オレンジ</item>
+        <item>ピンク</item>
+        <item>赤</item>
+        <item>黄色</item>
+    </string-array>
+    <string-array name="minus">
+        <item>マイナスの計算なし</item>
+        <item>マイナスの計算あり</item>
+    </string-array>
+    <string name="title_activity_subtraction">SubtractionActivity</string>
+    <string name="title_activity_record">RecordActivity</string>
+</resources>
