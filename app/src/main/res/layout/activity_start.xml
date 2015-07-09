@@ -51,4 +51,22 @@
         android:layout_centerHorizontal="true"
         android:onClick="subtraction" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="今日(年月日)、0回目のプレイです。"
+        android:id="@+id/textView9"
+        android:layout_above="@+id/textView10"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0日連続プレイです。"
+        android:id="@+id/textView10"
+        android:layout_above="@+id/button2"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>
