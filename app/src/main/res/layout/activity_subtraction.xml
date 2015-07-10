@@ -293,8 +293,7 @@
             android:layout_height="fill_parent"
             android:id="@+id/correct_img"
             android:src="@drawable/correct"
-            android:clickable="true"
-            android:onClick="image_pushed" />
+            android:clickable="false" />
 
         <!--ばつ-->
         <ImageView
@@ -302,8 +301,7 @@
             android:layout_height="fill_parent"
             android:id="@+id/incorrect_img"
             android:src="@drawable/incorrect"
-            android:clickable="true"
-            android:onClick="image_pushed" />
+            android:clickable="false"/>
     </RelativeLayout>
 
 </RelativeLayout>

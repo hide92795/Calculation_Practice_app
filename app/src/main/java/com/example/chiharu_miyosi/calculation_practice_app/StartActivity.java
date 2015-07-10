@@ -22,7 +22,7 @@ public class StartActivity extends ActionBarActivity {
     int month;
     int day;
     int date;
-    int times_day;
+    int times_in_day;
     int continuous_day;
     TextView times_in_day_t,continuous_day_times_t;
 
@@ -39,7 +39,7 @@ public class StartActivity extends ActionBarActivity {
         SharedPreferences prefs4 = getSharedPreferences("times_day",Context.MODE_PRIVATE);
         SharedPreferences prefs5 = getSharedPreferences("continuous_day",Context.MODE_PRIVATE);
         SharedPreferences prefs6 = getSharedPreferences("last_date",Context.MODE_PRIVATE);
-        times_day = prefs4.getInt("times_day",0);
+        times_in_day = prefs4.getInt("times_day",0);
         continuous_day = prefs5.getInt("continuous_day",0);
         last_year = prefs.getInt("last_year", 0);
         last_month = prefs2.getInt("last_month", 0);
@@ -51,20 +51,20 @@ public class StartActivity extends ActionBarActivity {
         day = calendar.get(Calendar.DAY_OF_MONTH);
         date = day + month * 100 + year * 10000;
         if(last_date == date){
-            times_day = times_day + 1;
+            times_in_day = times_in_day + 1;
         }else{
-            times_day = 0;
+            times_in_day = 1;
         }
         if(date == last_date + 1){
             continuous_day = continuous_day +1;
         }else{
             continuous_day = 0;
         }
-        times_in_day_t.setText("今日(" + year + "年" + month + "月" + day + "日)、" + times_day + "回目のプレイです。");
+        times_in_day_t.setText("今日(" + year + "年" + month + "月" + day + "日)、" + times_in_day + "回目のプレイです。");
         if(continuous_day > 0){
             continuous_day_times_t.setText(continuous_day + "日連続プレイです。");
         }else{
-            continuous_day_times_t.setText("前回のプレイは" + last_year + "年");
+            continuous_day_times_t.setText("前回のプレイは" + last_year + "年" + last_month + "月" + last_day + "日です。");
         }
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("last_year",year);
@@ -76,13 +76,13 @@ public class StartActivity extends ActionBarActivity {
         editor3.putInt("last_day",day);
         editor3.commit();
         SharedPreferences.Editor editor4 = prefs4.edit();
-        editor4.putInt("times_day",times_day);
+        editor4.putInt("times_day",times_in_day);
         editor4.commit();
         SharedPreferences.Editor editor5 = prefs5.edit();
         editor5.putInt("continuous_day",continuous_day);
         editor5.commit();
         SharedPreferences.Editor editor6 = prefs6.edit();
-        editor6.putInt("last_date",last_date);
+        editor6.putInt("last_date",date);
         editor6.commit();
     }
 

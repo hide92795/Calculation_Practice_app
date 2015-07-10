@@ -53,36 +53,28 @@ public class SubtractionActivity extends ActionBarActivity {
         number2 = (TextView)findViewById(R.id.number2);
         answer = (TextView)findViewById(R.id.answer);
         correct_t = (TextView)findViewById(R.id.correct);
-        correct_t.setText("0/0" + "問");
-        n1 = (int)(Math.random()*98) + 1;
-        number1.setText(String.valueOf(n1));
-        n2 = (int)(Math.random()*98) + 1;
-        number2.setText(String.valueOf(n2));
-        if(minus == 1){
-            if(n1 < n2){
-                n1 = (int)(Math.random()*98) + 1;
-                number1.setText(String.valueOf(n1));
-                n2 = (int)(Math.random()*98) + 1;
-                number2.setText(String.valueOf(n2));
-            }else{
-                answer.setText("");
-                ca = n1 - n2;
-                a = 0;
-                correct = 0;
-                times = 0;
+        correct_t.setText("0/0問");
+        if(minus == 1) {
+            while (n1 < n2) {
+                n1 = (int)(Math.random() * 98) + 1;
+                n2 = (int)(Math.random() * 98) + 1;
             }
         }else{
-            answer.setText("");
-            ca = n1 - n2;
-            a = 0;
-            correct = 0;
-            times = 0;
+            n1 = (int)(Math.random()*98) + 1;
+            n2 = (int)(Math.random()*98) + 1;
         }
+        number1.setText(String.valueOf(n1));
+        number2.setText(String.valueOf(n2));
+        answer.setText("");
+        ca = n1 - n2;
+        a = 0;
+        correct = 0;
+        times = 0;
         answer_minus = false;
     }
 
     public void click1(View v){
-        if(answer_minus = true){
+        if(answer_minus == true){
             if(a == 0){
                 a = -1;
             }else{
@@ -99,7 +91,7 @@ public class SubtractionActivity extends ActionBarActivity {
     }
 
     public void click2(View v) {
-        if(answer_minus = true){
+        if(answer_minus == true){
             if(a == 0){
                 a = -2;
             }else{
@@ -116,7 +108,7 @@ public class SubtractionActivity extends ActionBarActivity {
     }
 
     public void click3(View v) {
-        if(answer_minus = true){
+        if(answer_minus == true){
             if(a == 0){
                 a = -3;
             }else{
@@ -133,7 +125,7 @@ public class SubtractionActivity extends ActionBarActivity {
     }
 
     public void click4(View v) {
-        if(answer_minus = true){
+        if(answer_minus == true){
             if(a == 0){
                 a = -4;
             }else{
@@ -150,7 +142,7 @@ public class SubtractionActivity extends ActionBarActivity {
     }
 
     public void click5(View v) {
-        if(answer_minus = true){
+        if(answer_minus == true){
             if(a == 0){
                 a = -5;
             }else{
@@ -167,7 +159,7 @@ public class SubtractionActivity extends ActionBarActivity {
     }
 
     public void click6(View v) {
-        if(answer_minus = true){
+        if(answer_minus == true){
             if(a == 0){
                 a = -6;
             }else{
@@ -184,7 +176,7 @@ public class SubtractionActivity extends ActionBarActivity {
     }
 
     public void click7(View v) {
-        if(answer_minus = true){
+        if(answer_minus == true){
             if(a == 0){
                 a = -7;
             }else{
@@ -201,7 +193,7 @@ public class SubtractionActivity extends ActionBarActivity {
     }
 
     public void click8(View v) {
-        if(answer_minus = true){
+        if(answer_minus == true){
             if(a == 0){
                 a = -8;
             }else{
@@ -218,7 +210,7 @@ public class SubtractionActivity extends ActionBarActivity {
     }
 
     public void click9(View v) {
-        if(answer_minus = true){
+        if(answer_minus == true){
             if(a == 0){
                 a = -9;
             }else{
@@ -252,12 +244,13 @@ public class SubtractionActivity extends ActionBarActivity {
         answer.setText(String.valueOf(a));
     }
 
-    public void minus (View v){
+    public void click_minus (View v){
         if(a == 0){
             answer.setText("-");
             answer_minus = true;
         }else{
             a = a * -1;
+            answer.setText(String.valueOf(a));
         }
     }
 
@@ -270,58 +263,42 @@ public class SubtractionActivity extends ActionBarActivity {
                 @Override
                 public void run(){
                     correct_img.setVisibility(View.GONE);
-                    n1 = (int)(Math.random()*98) + 1;
-                    n2 = (int)(Math.random()*98) + 1;
-                    if(minus == 1){
-                        if(n1 < n2){
-                            n1 = (int)(Math.random()*98) + 1;
-                            n2 = (int)(Math.random()*98) + 1;
-                        }else{
-                            number1.setText(String.valueOf(n1));
-                            number2.setText(String.valueOf(n2));
-                            answer.setText("");
-                            ca = n1 - n2;
-                            a = 0;
+                    if(minus == 1) {
+                        while (n1 < n2) {
+                            n1 = (int) (Math.random() * 98) + 1;
+                            n2 = (int) (Math.random() * 98) + 1;
                         }
                     }else{
-                        number1.setText(String.valueOf(n1));
-                        number2.setText(String.valueOf(n2));
-                        answer.setText("");
-                        ca = n1 - n2;
-                        a = 0;
+                        n1 = (int) (Math.random() * 98) + 1;
+                        n2 = (int) (Math.random() * 98) + 1;
                     }
                 }
-            },1500);
+            },1000);
         }else{
             incorrect_img.setVisibility(View.VISIBLE);
-            new Handler().postDelayed(new Runnable(){
+            new Handler().postDelayed(new Runnable() {
                 @Override
-                public void run(){
+                public void run() {
                     incorrect_img.setVisibility(View.GONE);
-                    n1 = (int)(Math.random()*98) + 1;
-                    n2 = (int)(Math.random()*98) + 1;
-                    if(minus == 1){
-                        if(n1 < n2){
-                            n1 = (int)(Math.random()*98) + 1;
-                            n2 = (int)(Math.random()*98) + 1;
-                        }else{
-                            number1.setText(String.valueOf(n1));
-                            number2.setText(String.valueOf(n2));
-                            answer.setText("");
-                            ca = n1 - n2;
-                            a = 0;
+                    if (minus == 1) {
+                        while (n1 < n2) {
+                            n1 = (int) (Math.random() * 98) + 1;
+                            n2 = (int) (Math.random() * 98) + 1;
                         }
-                    }else{
-                        number1.setText(String.valueOf(n1));
-                        number2.setText(String.valueOf(n2));
-                        answer.setText("");
-                        ca = n1 - n2;
-                        a = 0;
+                    } else {
+                        n1 = (int) (Math.random() * 98) + 1;
+                        n2 = (int) (Math.random() * 98) + 1;
                     }
                 }
-            },1500);
+            }, 1000);
         }
+        number1.setText(String.valueOf(n1));
+        number2.setText(String.valueOf(n2));
+        answer.setText("");
+        ca = n1 - n2;
+        a = 0;
         correct_t.setText(correct + "/" + times + "問");
+        answer_minus = false;
 
         if(times == question_numbers){
             Intent intent = new Intent();

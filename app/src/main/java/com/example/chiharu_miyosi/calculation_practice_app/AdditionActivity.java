@@ -180,7 +180,7 @@ public class AdditionActivity extends ActionBarActivity {
                     number2.setText(String.valueOf(n2));
                     ca = n1 + n2;
                 }
-            },1500);
+            },1000);
         }else{
             incorrect_img.setVisibility(View.VISIBLE);
             new Handler().postDelayed(new Runnable(){
@@ -198,7 +198,7 @@ public class AdditionActivity extends ActionBarActivity {
                     number2.setText(String.valueOf(n2));
                     ca = n1 + n2;
                 }
-            },1500);
+            },1000);
         }
         correct_t.setText(correct + "/" + times + "問");
 
