@@ -15,20 +15,9 @@ import android.widget.TextView;
 
 public class SubtractionActivity extends ActionBarActivity {
 
-    TextView number1;
-    TextView number2;
-    TextView answer;
-    TextView correct_t;
+    TextView number1,number2,answer,correct_t;
     ImageView eraser_image,correct_img,incorrect_img;
-    int n1;
-    int n2;
-    int a;
-    int ca;
-    int correct;
-    int times;
-    int question_numbers;
-    int eraser_color;
-    int minus;
+    int n1,n2,a,ca,correct,times,question_numbers,eraser_color,minus;
     boolean answer_minus;
 
     @Override
@@ -47,21 +36,22 @@ public class SubtractionActivity extends ActionBarActivity {
         eraser_image.setImageResource(image);
         SharedPreferences prefs = getSharedPreferences("question_numbers", Context.MODE_PRIVATE);
         question_numbers = prefs.getInt("question_numbers",10);
-        SharedPreferences prefs3 =getSharedPreferences("minus",Context.MODE_PRIVATE);
+        SharedPreferences prefs3 = getSharedPreferences("minus",Context.MODE_PRIVATE);
         minus = prefs3.getInt("minus",1);
         number1 = (TextView)findViewById(R.id.number1);
         number2 = (TextView)findViewById(R.id.number2);
         answer = (TextView)findViewById(R.id.answer);
         correct_t = (TextView)findViewById(R.id.correct);
         correct_t.setText("0/0問");
-        if(minus == 1) {
-            while (n1 < n2) {
-                n1 = (int)(Math.random() * 98) + 1;
-                n2 = (int)(Math.random() * 98) + 1;
+        n1 = (int)(Math.random()*99);
+        n2 = (int)(Math.random()*99);
+        if (minus == 1) {
+            if (n1 < n2){
+                a = n1;
+                n1 = n2;
+                n2 = a;
+                a = 0;
             }
-        }else{
-            n1 = (int)(Math.random()*98) + 1;
-            n2 = (int)(Math.random()*98) + 1;
         }
         number1.setText(String.valueOf(n1));
         number2.setText(String.valueOf(n2));
@@ -263,14 +253,14 @@ public class SubtractionActivity extends ActionBarActivity {
                 @Override
                 public void run(){
                     correct_img.setVisibility(View.GONE);
-                    if(minus == 1) {
-                        while (n1 < n2) {
-                            n1 = (int) (Math.random() * 98) + 1;
-                            n2 = (int) (Math.random() * 98) + 1;
+                    n1 = (int)(Math.random()*99);
+                    n2 = (int)(Math.random()*99);
+                    if (minus == 1) {
+                        if (n1 < n2){
+                            a = n1;
+                            n1 = n2;
+                            n2 = a;
                         }
-                    }else{
-                        n1 = (int) (Math.random() * 98) + 1;
-                        n2 = (int) (Math.random() * 98) + 1;
                     }
                 }
             },1000);
@@ -280,14 +270,15 @@ public class SubtractionActivity extends ActionBarActivity {
                 @Override
                 public void run() {
                     incorrect_img.setVisibility(View.GONE);
+                    n1 = (int)(Math.random()*99);
+                    n2 = (int)(Math.random()*99);
                     if (minus == 1) {
-                        while (n1 < n2) {
-                            n1 = (int) (Math.random() * 98) + 1;
-                            n2 = (int) (Math.random() * 98) + 1;
+                        if (n1 < n2){
+                            a = n1;
+                            n1 = n2;
+                            n2 = a;
+                            a = 0;
                         }
-                    } else {
-                        n1 = (int) (Math.random() * 98) + 1;
-                        n2 = (int) (Math.random() * 98) + 1;
                     }
                 }
             }, 1000);

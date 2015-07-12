@@ -26,6 +26,11 @@
         <item>マイナスの計算なし</item>
         <item>マイナスの計算あり</item>
     </string-array>
+    <string-array name="setting">
+        <item>問題数</item>
+        <item>マイナスの計算</item>
+        <item>消しゴムの色</item>
+    </string-array>
     <string name="title_activity_subtraction">SubtractionActivity</string>
     <string name="title_activity_record">RecordActivity</string>
 </resources>

@@ -1,8 +1,11 @@
 package com.example.chiharu_miyosi.calculation_practice_app;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.DialogPreference;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 public class SettingActivity extends ActionBarActivity {
@@ -23,83 +28,27 @@ public class SettingActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        spinner = (Spinner)findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.question_numbers, android.R.layout.simple_spinner_item);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
+        final ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.setting, android.R.layout.simple_list_item_1);
+        final ListView listview = (ListView)findViewById(R.id.listView);
+        listview.setAdapter(arrayAdapter);
+        listview.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int itemPosition = (int) spinner.getSelectedItemPosition();
-                if (itemPosition == 0) {
-                    question_numbers = 10;
+                position = (int)listview.getSelectedItemPosition();
+                if(position == 0){
+                    String[] items = getResources().getStringArray(R.array.question_numbers);
+                    AlertDialog.Builder adb1 = new AlertDialog.Builder(SettingActivity.this);
+                    int checkedItem;
+                    checkedItem = 0;
+                    adb1.setItems(new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog, int which){
+
+                        }
+                    });
+                    adb1.show();
                 }
-                if (itemPosition == 1) {
-                    question_numbers = 15;
-                }
-                if (itemPosition == 2) {
-                    question_numbers = 20;
-                }
-                if (itemPosition == 3) {
-                    question_numbers = 100;
-                }
-                SharedPreferences prefs = getSharedPreferences("question_numbers", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt("question_numbers",question_numbers);
-                editor.commit();
+                //positionに応じてアラートダイアログを表示する。
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        spinner2 = (Spinner)findViewById(R.id.spinner2);
-        ArrayAdapter<CharSequence> arrayAdapter1 = ArrayAdapter.createFromResource(this,R.array.eraser_color,android.R.layout.simple_spinner_item);
-        arrayAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(arrayAdapter1);
-
-        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                eraser_color = position + 1;
-                SharedPreferences prefs = getSharedPreferences("eraser_color",Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt("eraser_color",eraser_color);
-                editor.commit();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        spinner3 = (Spinner)findViewById(R.id.spinner3);
-        ArrayAdapter<CharSequence> arrayAdapter3 = ArrayAdapter.createFromResource(this,R.array.minus,android.R.layout.simple_spinner_item);
-        arrayAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner3.setAdapter(arrayAdapter3);
-
-        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int itemPosition = (int) spinner3.getSelectedItemPosition();
-                if (itemPosition == 0) {
-                    minus = 1;
-                }
-                if (itemPosition == 1) {
-                    minus = 2;
-                }
-                SharedPreferences prefs = getSharedPreferences("minus",Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt("minus",minus);
-                editor.commit();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(AdapterView<?> parent,View view,int position,long id) {
 
             }
         });

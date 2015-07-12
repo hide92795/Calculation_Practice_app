@@ -15,19 +15,9 @@ import android.widget.TextView;
 
 public class AdditionActivity extends ActionBarActivity {
 
-    TextView number1;
-    TextView number2;
-    TextView answer;
-    TextView correct_t;
+    TextView number1,number2,answer,correct_t;
     ImageView eraser_image,correct_img,incorrect_img;
-    int n1;
-    int n2;
-    int a;
-    int ca;
-    int correct;
-    int times;
-    int question_numbers;
-    int eraser_color;
+    int n1,n2,a,ca,correct,times,question_numbers,eraser_color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

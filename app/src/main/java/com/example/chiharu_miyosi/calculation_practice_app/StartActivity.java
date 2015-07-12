@@ -1,6 +1,8 @@
 package com.example.chiharu_miyosi.calculation_practice_app;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
@@ -14,16 +16,7 @@ import java.util.Calendar;
 
 
 public class StartActivity extends ActionBarActivity {
-    int last_year;
-    int last_month;
-    int last_day;
-    int last_date;
-    int year;
-    int month;
-    int day;
-    int date;
-    int times_in_day;
-    int continuous_day;
+    int last_year,last_month,last_day,last_date,year,month,day,date,times_in_day,continuous_day;
     TextView times_in_day_t,continuous_day_times_t;
 
     @Override
@@ -60,6 +53,20 @@ public class StartActivity extends ActionBarActivity {
         }else{
             continuous_day = 0;
         }
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        if(continuous_day > 0){
+            adb.setMessage("今日(" + year + "年" + month + "月" + day + "日)、" + times_in_day + "回目のプレイです。" + continuous_day + "日連続プレイです。");
+        }else{
+            adb.setMessage("今日(" + year + "年" + month + "月" + day + "日)、" + times_in_day + "回目のプレイです。" + continuous_day + "日連続プレイです。");
+        }
+        adb.setMessage("今日(" + year + "年" + month + "月" + day + "日)、" + times_in_day + "回目のプレイです。" + "前回のプレイは" + last_year + "年" + last_month + "月" + last_day + "日です。");
+        adb.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which){}
+                });
+        adb.setCancelable(false);
+        AlertDialog alertDialog = adb.create();
+        alertDialog.show();
         times_in_day_t.setText("今日(" + year + "年" + month + "月" + day + "日)、" + times_in_day + "回目のプレイです。");
         if(continuous_day > 0){
             continuous_day_times_t.setText(continuous_day + "日連続プレイです。");
