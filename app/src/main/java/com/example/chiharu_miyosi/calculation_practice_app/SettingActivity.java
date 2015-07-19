@@ -31,25 +31,19 @@ public class SettingActivity extends ActionBarActivity {
         final ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.setting, android.R.layout.simple_list_item_1);
         final ListView listview = (ListView)findViewById(R.id.listView);
         listview.setAdapter(arrayAdapter);
-        listview.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                position = (int)listview.getSelectedItemPosition();
-                if(position == 0){
-                    String[] items = getResources().getStringArray(R.array.question_numbers);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
                     AlertDialog.Builder adb1 = new AlertDialog.Builder(SettingActivity.this);
-                    int checkedItem;
-                    checkedItem = 0;
-                    adb1.setItems(new DialogInterface.OnClickListener(){
-                        public void onClick(DialogInterface dialog, int which){
-
+                    adb1.setItems(R.array.question_numbers, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // whichに選択した番号(0始まり)が入っている
                         }
                     });
                     adb1.show();
                 }
                 //positionに応じてアラートダイアログを表示する。
-            }
-            public void onNothingSelected(AdapterView<?> parent,View view,int position,long id) {
-
             }
         });
     }
